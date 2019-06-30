@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles.xml * * Copyright (C) 2019 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="visit/list" extends="master.page">
+		<put-attribute name="title" value="Visits" />
+		<put-attribute name="body"
+			value="/views/prisoner/showVisits.jsp" />
+	</definition>
+
+	<definition name="report/list" extends="master.page">
+		<put-attribute name="title" value="Reports" />
+		<put-attribute name="body"
+			value="/views/prisoner/showReport.jsp" />
+	</definition>
+
+	<definition name="visitor/prisoner/list"
+		extends="master.page">
+		<put-attribute name="title" value="My Visitors" />
+		<put-attribute name="body"
+			value="/views/prisoner/listOfVisitors.jsp" />
+	</definition>
+
+	<definition name="visit/prisoner/edit" extends="master.page">
+		<put-attribute name="title" value="Create a Visit" />
+		<put-attribute name="body"
+			value="/views/prisoner/editVisitAsPrisoner.jsp" />
+	</definition>
+
+	<definition name="prisoner/salesMen/list"
+		extends="master.page">
+		<put-attribute name="title" value="SalesMen" />
+		<put-attribute name="body"
+			value="/views/prisoner/listOfSalesMen.jsp" />
+	</definition>
+
+	<definition name="finderActivities/prisoner/list"
+		extends="master.page">
+		<put-attribute name="title" value="Finder Result" />
+		<put-attribute name="body"
+			value="/views/prisoner/finderActivities.jsp" />
+	</definition>
+
+	<definition name="request/prisoner/list"
+		extends="master.page">
+		<put-attribute name="title" value="Requests list" />
+		<put-attribute name="body"
+			value="/views/prisoner/requestList.jsp" />
+	</definition>
+
+
+	<definition name="request/prisoner/create"
+		extends="master.page">
+		<put-attribute name="title" value="Create request" />
+		<put-attribute name="body"
+			value="/views/prisoner/createRequest.jsp" />
+	</definition>
+	
+	<definition name="prisoner/store" extends="master.page">	
+		<put-attribute name="title" value="Store" />
+		<put-attribute name="body" value="/views/anonymous/listOfProducts.jsp" />
+	</definition>
+	
+	<definition name="prisoner/buy" extends="master.page">	
+		<put-attribute name="title" value="Buy product" />
+		<put-attribute name="body" value="/views/prisoner/buyProduct.jsp" />
+	</definition>
+	
+	<definition name="prisoner/purchasedProducts" extends="master.page">	
+		<put-attribute name="title" value="Purchased products" />
+		<put-attribute name="body" value="/views/prisoner/prisonerProducts.jsp" />
+	</definition>
+
+</tiles-definitions>

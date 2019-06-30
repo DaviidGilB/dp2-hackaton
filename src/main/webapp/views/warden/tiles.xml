@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles.xml * * Copyright (C) 2019 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="warden/reports" extends="master.page">	
+		<put-attribute name="title" value="Reports" />
+		<put-attribute name="body" value="/views/warden/reports.jsp" />
+	</definition>
+	
+	<definition name="warden/registerWarden" extends="master.page">	
+		<put-attribute name="title" value="Register a warden" />
+		<put-attribute name="body" value="/views/warden/registerWarden.jsp" />
+	</definition>
+	
+	<definition name="warden/registerPrisoner" extends="master.page">	
+		<put-attribute name="title" value="Register a prisoner" />
+		<put-attribute name="body" value="/views/warden/registerPrisoner.jsp" />
+	</definition>
+	
+	<definition name="warden/registerSalesman" extends="master.page">	
+		<put-attribute name="title" value="Register a salesman" />
+		<put-attribute name="body" value="/views/warden/registerSalesman.jsp" />
+	</definition>
+	
+	<definition name="warden/registerGuard" extends="master.page">	
+		<put-attribute name="title" value="Register a guard" />
+		<put-attribute name="body" value="/views/warden/registerGuard.jsp" />
+	</definition>
+	
+	<definition name="prisoner/warden/listSuspects" extends="master.page">	
+		<put-attribute name="title" value="List of prisoners" />
+		<put-attribute name="body" value="/views/warden/listOfSuspects.jsp" />
+	</definition>
+	
+		<definition name="broadcast/warden/sendSecurityBreach" extends="master.page">	
+		<put-attribute name="title" value="Broadcast security breach notification" /> 
+		<put-attribute name="body" value="/views/warden/formBroadcastMessage.jsp" />
+	</definition>
+	
+	<definition name="broadcast/warden/send" extends="master.page">	
+		<put-attribute name="title" value="Broadcast notification" /> 
+		<put-attribute name="body" value="/views/warden/formBroadcastMessage.jsp" />
+	</definition>
+	
+	<definition name="warden/editPrisoner" extends="master.page">	
+		<put-attribute name="title" value="Edit profile" /> 
+		<put-attribute name="body" value="/views/warden/editPrisoner.jsp" />
+	</definition>
+	
+	<definition name="warden/showPrisoner" extends="master.page">	
+		<put-attribute name="title" value="Prisoner profile" /> 
+		<put-attribute name="body" value="/views/warden/showPrisoner.jsp" />
+	</definition>
+	
+	<definition name="warden/salesman" extends="master.page">	
+		<put-attribute name="title" value="Salesmen" /> 
+		<put-attribute name="body" value="/views/warden/listOfSalesMen.jsp" />
+	</definition>
+	
+	<definition name="warden/configuration" extends="master.page">	
+		<put-attribute name="title" value="Configuration" /> 
+		<put-attribute name="body" value="/views/warden/configuration.jsp" />
+	</definition>
+	
+	<definition name="warden/editConfiguration" extends="master.page">	
+		<put-attribute name="title" value="Edit Configuration" /> 
+		<put-attribute name="body" value="/views/warden/editConfiguration.jsp" />
+	</definition>
+	
+	<definition name="spamWords/configuration" extends="master.page">	
+		<put-attribute name="title" value="List of spam words" /> 
+		<put-attribute name="body" value="/views/warden/spamList.jsp" />
+	</definition>
+	
+	<definition name="listTypeProd/configuration" extends="master.page">	
+		<put-attribute name="title" value="List of types" /> 
+		<put-attribute name="body" value="/views/warden/typesProducts.jsp" />
+	</definition>
+
+	<definition name="warden/addSpam" extends="master.page">	
+		<put-attribute name="title" value="Add a spam word" /> 
+		<put-attribute name="body" value="/views/warden/addSpam.jsp" />
+	</definition>
+	
+	<definition name="warden/addType" extends="master.page">	
+		<put-attribute name="title" value="Add a product type" /> 
+		<put-attribute name="body" value="/views/warden/addType.jsp" />
+	</definition>
+	
+	<definition name="prisoner/warden/addCharge" extends="master.page">	
+		<put-attribute name="title" value="Add a charge" /> 
+		<put-attribute name="body" value="/views/warden/addCharge.jsp" />
+	</definition>
+	
+	<definition name="statistics/warden/show" extends="master.page">	
+		<put-attribute name="title" value="Statistics" />
+		<put-attribute name="body" value="/views/warden/statistics.jsp" />
+	</definition>
+	
+	<definition name="warden/charge/listAll" extends="master.page">	
+		<put-attribute name="title" value="Charges" /> 
+		<put-attribute name="body" value="/views/warden/listAllCharges.jsp" />
+	</definition>
+	
+	<definition name="warden/charge/newCharge" extends="master.page">	
+		<put-attribute name="title" value="Create charge" /> 
+		<put-attribute name="body" value="/views/warden/editCharge.jsp" />
+	</definition>
+
+</tiles-definitions>

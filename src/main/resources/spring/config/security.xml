@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	* security.xml * * Copyright (C) 2019 Universidad de Sevilla 
+	* 
+	* The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html 
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+	
+	<!-- PERMIT ALL -->	
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" />
+		<security:intercept-url pattern="/images/**" access="permitAll" />
+		<security:intercept-url pattern="/scripts/**" access="permitAll" />
+		<security:intercept-url pattern="/styles/**" access="permitAll" />
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" />
+		<security:intercept-url pattern="/security/login.do" access="permitAll" />
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" />
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
+		<security:intercept-url pattern="/anonymous/prisoner/**" access="permitAll" />
+		<security:intercept-url pattern="/anonymous/charge/**" access="permitAll" />
+		<security:intercept-url pattern="/product/anonymous/**" access="permitAll" />
+		<security:intercept-url pattern="/anonymous/socialWorker/**" access="permitAll" />
+		<security:intercept-url pattern="/anonymous/**" access="permitAll" />
+
+		
+	<!-- WARDEN -->
+		<security:intercept-url pattern="/warden/freePrisoners/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/warden/charge/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/report/warden/**"	access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/warden/warden/**"	access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/prisoner/warden/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/salesman/warden/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/guard/warden/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/broadcast/warden/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/configuration/warden/**" access="hasRole('WARDEN')" />
+		<security:intercept-url pattern="/statistics/warden/**" access="hasRole('WARDEN')" />
+		
+	<!-- PRISONER -->
+		<security:intercept-url pattern="/visit/prisoner/**" 	access="hasRole('PRISONER')" />
+		<security:intercept-url pattern="/visitor/prisoner/**" 	access="hasRole('PRISONER')" />
+		<security:intercept-url pattern="/visit/report/**" 	access="hasAnyRole('VISITOR', 'PRISONER', 'GUARD', 'WARDEN')" />
+		<security:intercept-url pattern="/product/salesman/prisoner/**" 	access="hasRole('PRISONER')" />
+		<security:intercept-url pattern="/product/prisoner/**" 	access="hasRole('PRISONER')" />
+		<security:intercept-url pattern="/finderActivities/prisoner/**" 	access="hasRole('PRISONER')" />
+		<security:intercept-url pattern="/request/prisoner/**" 	access="hasRole('PRISONER')" /> 
+	
+	<!-- VISITOR -->
+		<security:intercept-url pattern="/visit/visitor/**" 	access="hasRole('VISITOR')" />
+		<security:intercept-url pattern="/finder/visitor/**" 	access="hasRole('VISITOR')" />
+		
+	<!-- GUARD -->
+		<security:intercept-url pattern="/visit/guard/**" 	access="hasRole('GUARD')" />
+		<security:intercept-url pattern="/visit/report/create.do" 	access="hasRole('GUARD')" />
+	
+	<!-- SOCIAL WORKER -->
+		<security:intercept-url pattern="/curriculum/socialWorker/**" 	access="hasRole('SOCIALWORKER')" />
+		<security:intercept-url pattern="/activity/socialworker/**" 	access="hasRole('SOCIALWORKER')" />
+		<security:intercept-url pattern="/request/socialworker/**" 	access="hasRole('SOCIALWORKER')" />
+	<!-- SALESMAN -->
+		<security:intercept-url pattern="/product/salesman/**" 	access="hasRole('SALESMAN')" />
+	
+	<!-- AUTHENTICATED -->
+		<security:intercept-url pattern="/authenticated/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/box/actor/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/actor/**" access="isAuthenticated()" />
+	
+	<!-- TERMS AND CONDITIONS -->
+		<security:intercept-url pattern="/anonymous/termsAndConditionsEN.do" access="permitAll" /> 
+		<security:intercept-url pattern="/anonymous/termsAndConditionsES.do" access="permitAll" /> 
+	
+	<!-- EXPORT DATA -->	
+		<security:intercept-url pattern="/export/**" access="isAuthenticated()" />
+
+	<!-- NONE -->
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+		
+		
+		
+
+		<security:form-login login-page="/security/login.do"
+			password-parameter="password" username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout logout-success-url="/" invalidate-session="true" />
+	</security:http>
+	
+	
+
+</beans>

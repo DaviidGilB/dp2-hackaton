@@ -1,0 +1,2413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	* PopulateDatabase.xml 
+	* 
+	* Copyright (C) 2019 Universidad de Sevilla 
+	* 
+	* The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from http://www.tdg-seville.info/License.html 
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		">
+	<!-- CONFIGURATION -->
+	<bean id ="configuration" class="domain.Configuration">
+		<property name="spainTelephoneCode" value="+34" />
+
+		<property name="spamWords">
+			<list>
+				<value>knife</value>
+				<value>escape</value>
+				<value>gun</value>
+				<value>riot</value>
+				<value>liberty</value>
+				<value>kill</value>
+				<value>weapon</value>
+				<value>soap</value>
+				<value>hole</value>
+				<value>cuchillo</value>
+				<value>escapar</value>
+				<value>pistola</value>
+				<value>motin</value>
+				<value>libertad</value>
+				<value>matar</value>
+				<value>arma</value>
+				<value>jabon</value>
+				<value>agujero</value>
+				<value>wals</value>
+			</list>
+		</property>
+		
+		<property name="typeProducts">
+			<list>
+				<ref bean="type1" />
+				<ref bean="type2" />
+				<ref bean="type3" />
+				<ref bean="type4" />
+				<ref bean="type5" />
+			</list>
+		</property>
+		
+		<property name="minFinderResults" value="1" />
+		<property name="maxFinderResults" value="24" />
+		<property name="timeFinderPrisoners" value="1"/>
+		<property name="timeFinderActivities" value="1"/>
+		<property name="finderResult" value="10"/>
+
+		
+		<property name="welcomeMessageEnglish" value="Welcome to Acme Alcatraz! Where your liberty ends" />
+		<property name="welcomeMessageSpanish" value="¡Bienvenidos a Acme Alcatraz! Donde vuestra libertad acaba" />
+		
+		<property name="systemName" value="Acme Alcatraz" />
+		<property name="imageURL" value="https://i.imgur.com/RktieYk.jpg" />
+
+		
+	</bean>
+
+	<!-- USER ACCOUNT -->
+	<!-- WARDEN -->
+		<!-- warden1 -->
+			<bean id="userAccount1" class="security.UserAccount">
+				<property name="username" value="warden1" />
+				<property name="password" value="48608991a8462900fc97737222c1a172" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="WARDEN" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean> 
+			
+		<!-- warden2 -->
+			<bean id="userAccount2" class="security.UserAccount">
+				<property name="username" value="warden2" />
+				<property name="password" value="5e4ccbf7c249154153f2aa2305fbf274" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="WARDEN" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean> 
+	
+	<!-- GUARD -->
+		<!-- GUARD1 -->
+			<bean id="userAccount3" class="security.UserAccount">
+				<property name="username" value="guard1" />
+				<property name="password" value="efbd5fbcf4e8da1c21aa716a8f6e892a" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="GUARD" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- GUARD2 -->
+			<bean id="userAccount4" class="security.UserAccount">
+				<property name="username" value="guard2" />
+				<property name="password" value="d9a70d2faaf9849934dfab90b2f78564" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="GUARD" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- GUARD3 -->
+			<bean id="userAccount5" class="security.UserAccount">
+				<property name="username" value="guard3" />
+				<property name="password" value="2e5f1fb6f193832d69ef0ceb4f5ab438" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="GUARD" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- GUARD4 -->
+			<bean id="userAccount6" class="security.UserAccount">
+				<property name="username" value="guard4" />
+				<property name="password" value="4ff830ddf2d6d33ed208b38f4b0d3d04" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="GUARD" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+	<!-- VISITOR -->
+		<!-- VISITOR1 -->	
+			<bean id="userAccount7" class="security.UserAccount">
+				<property name="username" value="visitor1" />
+				<property name="password" value="6b6bd8b6963e4a254bf6d4760390fddc" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="VISITOR" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- VISITOR2 -->	
+			<bean id="userAccount8" class="security.UserAccount">
+				<property name="username" value="visitor2" />
+				<property name="password" value="dc0aae5ad49b535328e8ff6586ce4cb9" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="VISITOR" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- VISITOR3 -->	
+			<bean id="userAccount9" class="security.UserAccount">
+				<property name="username" value="visitor3" />
+				<property name="password" value="3c7e8d3dc82fb340495186f57b6f251f" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="VISITOR" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- VISITOR4 -->	
+			<bean id="userAccount10" class="security.UserAccount">
+				<property name="username" value="visitor4" />
+				<property name="password" value="ecad069456249536c8fb9d96855d59c6" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="VISITOR" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+	<!-- SALESMAN -->
+		<!-- SALESMAN1 -->
+			<bean id="userAccount11" class="security.UserAccount">
+				<property name="username" value="salesMan1" />
+				<property name="password" value="e189a65f440258c461d37ba4717da11d" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="SALESMAN" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- SALESMAN2 -->
+			<bean id="userAccount12" class="security.UserAccount">
+				<property name="username" value="salesMan2" />
+				<property name="password" value="121d41fbbc9133e2aaf306b7729ed0c5" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="SALESMAN" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- SALESMAN3 -->
+			<bean id="userAccount13" class="security.UserAccount">
+				<property name="username" value="salesMan3" />
+				<property name="password" value="ea445da33acc2e5be752801b35305c58" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="SALESMAN" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+	
+	<!-- SOCIALWORKER -->
+		<!-- SOCIALWORKER1 -->
+			<bean id="userAccount14" class="security.UserAccount">
+				<property name="username" value="socialWorker1" />
+				<property name="password" value="451a44bf3f2d9083b0e7f36e6b5aa2da" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="SOCIALWORKER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- SOCIALWORKER2 -->
+			<bean id="userAccount15" class="security.UserAccount">
+				<property name="username" value="socialWorker2" />
+				<property name="password" value="268d0c48d1cd34951a3056a8f851247e" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="SOCIALWORKER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- SOCIALWORKER3 -->
+			<bean id="userAccount20" class="security.UserAccount">
+				<property name="username" value="socialWorker3" />
+				<property name="password" value="7bc934aaa46117d4021cba2e0f76b127" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="SOCIALWORKER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+	<!-- PRISONER -->
+		<!-- PRISONER1 -->
+			<bean id="userAccount16" class="security.UserAccount">
+				<property name="username" value="prisoner1" />
+				<property name="password" value="5ffe1c5650ac4b1192d574acef5bcf13" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="PRISONER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- PRISONER2 -->
+			<bean id="userAccount17" class="security.UserAccount">
+				<property name="username" value="prisoner2" />
+				<property name="password" value="95b2aa85f3f1fb94ba444f0f7f389652" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="PRISONER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="True" />
+			</bean>
+			
+		<!-- PRISONER3 -->
+			<bean id="userAccount18" class="security.UserAccount">
+				<property name="username" value="prisoner3" />
+				<property name="password" value="4e7d3e87e288f73729164d757022ef21" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="PRISONER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="False" />
+			</bean>
+			
+		<!-- PRISONER4 -->
+			<bean id="userAccount19" class="security.UserAccount">
+				<property name="username" value="prisoner4" />
+				<property name="password" value="360037a5b122b2bf758a3757874dadd6" />
+				<property name="authorities">
+					<list>
+						<bean class="security.Authority">
+							<property name="authority" value="PRISONER" />
+						</bean>
+					</list>
+				</property>
+				<property name="isNotLocked" value="False" />
+			</bean>
+		
+	
+	<!-- WARDEN -->
+		<!-- WARDEN1 -->
+			<bean id="warden1" class="domain.Warden">
+				<property name="name" value="Juan Carlos" />
+				<property name="middleName" value="El de Cuba" />
+				<property name="surname" value="Alonso Valenzuela" />
+				<property name="photo" value="https://i.imgur.com/P6t2k18.png" />
+				<property name="email" value="warden@email.com" />
+			
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxWarden1" />
+						<ref bean="outBoxWarden1" />
+						<ref bean="trashBoxWarden1" />
+						<ref bean="suspiciousBoxWarden1" />
+						<ref bean="nosystemBox1" />
+						
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount1" />
+			</bean>
+			
+		<!-- WARDEN2 -->
+			<bean id="warden2" class="domain.Warden">
+				<property name="name" value="Roberto" />
+				<property name="middleName" value="El que esta fuera" />
+				<property name="surname" value="Hermoso" />
+				<property name="photo" value="https://i.imgur.com/CeMrDl4.png" />
+				<property name="email" value="warden@email.com" />
+			
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxWarden2" />
+						<ref bean="outBoxWarden2" />
+						<ref bean="trashBoxWarden2" />
+						<ref bean="suspiciousBoxWarden2" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount2" />
+			</bean>
+	
+	<!-- GUARD -->
+		<!-- GUARD1 -->
+			<bean id="guard1" class="domain.Guard">
+				<property name="name" value="Kevin" />
+				<property name="middleName" value="Bodyguard" />
+				<property name="surname" value="Costner" />
+				<property name="photo" value="https://i.imgur.com/U5VWtIg.png" />
+				<property name="phone" value="+34667887558" />
+				<property name="email" value="costner@gmail.com" />
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxGuard1" />
+						<ref bean="outBoxGuard1" />
+						<ref bean="trashBoxGuard1" />
+						<ref bean="suspiciousBoxGuard1" />
+					</list>
+				</property>
+				
+				<property name="visits">
+					<list>	
+						<ref bean="visit1" /> 
+						<ref bean="visit2" /> 
+						<ref bean="visit3" /> 
+					</list>
+				</property>
+				
+				<property name="userAccount" ref="userAccount3" />
+			</bean>
+			
+		<!-- GUARD2 -->
+			<bean id="guard2" class="domain.Guard">
+				<property name="name" value="Jose" />
+				<property name="middleName" value="Luis" />
+				<property name="surname" value="Torrente" />
+				<property name="photo" value="https://i.imgur.com/76O17FO.jpg" />
+				<property name="phone" value="+34667887885" />
+				<property name="email" value="guard2@gmail.com" />
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxGuard2" />
+						<ref bean="outBoxGuard2" />
+						<ref bean="trashBoxGuard2" />
+						<ref bean="suspiciousBoxGuard2" />
+					</list>
+				</property>
+				<property name="visits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount4" />
+			</bean>
+			
+		<!-- GUARD3 -->
+			<bean id="guard3" class="domain.Guard">
+				<property name="name" value="Quincy" />
+				<property name="middleName" value="Hand" />
+				<property name="surname" value="Sharp" />
+				<property name="photo" value="https://i.imgur.com/pQt4WwZ.jpg" />
+				<property name="phone" value="+34689887885" />
+				<property name="email" value="guard3@gmail.com" />
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxGuard3" />
+						<ref bean="outBoxGuard3" />
+						<ref bean="trashBoxGuard3" />
+						<ref bean="suspiciousBoxGuard3" />
+					</list>
+				</property>
+				<property name="visits">
+					<list>
+						<ref bean="visit9" /> 
+						<ref bean="visit10" /> 
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount5" />
+			</bean>
+			
+		<!-- GUARD4 -->
+			<bean id="guard4" class="domain.Guard">
+				<property name="name" value="Yuri" />
+				<property name="middleName" value="Wrath" />
+				<property name="surname" value="Watanabe" />
+				<property name="photo" value="https://i.imgur.com/HUVQFXS.jpg" />
+				<property name="phone" value="+34689666885" />
+				<property name="email" value="guard4@gmail.com" />
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxGuard4" />
+						<ref bean="outBoxGuard4" />
+						<ref bean="trashBoxGuard4" />
+						<ref bean="suspiciousBoxGuard4" />
+					</list>
+				</property>
+				<property name="visits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount6" />
+			</bean>
+			
+	<!-- VISITOR -->
+		<!-- VISITOR1 -->
+			<bean id="visitor1" class="domain.Visitor">
+				<property name="name" value="Juanvi" />
+				<property name="middleName" value="Cuidaooo" />
+				<property name="surname" value="Gutierrez" />
+				<property name="photo" value="https://i.imgur.com/xHrXFWX.jpg" />
+				
+				<property name="emergencyEmail" value="wals@gmail.com" />
+				<property name="phoneNumber" value="+34655999777" />
+				<property name="email" value="juanvi@gmail.com" />
+				<property name="address" value="Despacho" />
+				<property name="finder" ref="finderVisitor1" />
+				
+				<property name="visits">
+					<list>
+						<ref bean="visit1" />
+						<ref bean="visit2" />
+						<ref bean="visit3" />
+						<ref bean="visit8" /> 
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxVisitor1" />
+						<ref bean="outBoxVisitor1" />
+						<ref bean="trashBoxVisitor1" />
+						<ref bean="suspiciousBoxVisitor1" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount7" />
+			</bean>
+		
+		<!-- VISITOR2 -->
+			<bean id="visitor2" class="domain.Visitor">
+				<property name="name" value="Not" />
+				<property name="middleName" value="A Mafia" />
+				<property name="surname" value="Leader" />
+				<property name="photo" value="https://i.imgur.com/QQck9m9.png" />
+				
+				<property name="emergencyEmail" value="email@gmail.com" />
+				<property name="phoneNumber" value="+34655888777" />
+				<property name="email" value="email@gmail.com" />
+				<property name="address" value="Despacho" />
+				<property name="finder" ref="finderVisitor2" />
+				
+				<property name="visits">
+					<list>
+						<ref bean="visit4" />
+						<ref bean="visit6" />
+						<ref bean="visit7" />
+						<ref bean="visit9" /> 
+						<ref bean="visit10" /> 
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxVisitor2" />
+						<ref bean="outBoxVisitor2" />
+						<ref bean="trashBoxVisitor2" />
+						<ref bean="suspiciousBoxVisitor2" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount8" />
+			</bean>
+		
+		<!-- VISITOR3 -->
+			<bean id="visitor3" class="domain.Visitor">
+				<property name="name" value="Not a" />
+				<property name="middleName" value="Mafia" />
+				<property name="surname" value="Killer" />
+				<property name="photo" value="https://i.imgur.com/uS3BR2G.jpg" />
+				<property name="emergencyEmail" value="email@gmail.com" />
+				<property name="phoneNumber" value="+34655888777" />
+				<property name="email" value="email@gmail.com" />
+				<property name="address" value="Despacho" />
+				<property name="finder" ref="finderVisitor3" />
+				
+				<property name="visits">
+					<list>
+						<ref bean="visit5" />
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxVisitor3" />
+						<ref bean="outBoxVisitor3" />
+						<ref bean="trashBoxVisitor3" />
+						<ref bean="suspiciousBoxVisitor3" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount9" />
+			</bean>
+			
+		<!-- VISITOR4 -->
+			<bean id="visitor4" class="domain.Visitor">
+				<property name="name" value="Funny" />
+				<property name="middleName" value="Dirty Deeds" />
+				<property name="surname" value="Valentine" />
+				<property name="photo" value="https://i.imgur.com/iXfJBX9.jpg" />
+				
+				<property name="emergencyEmail" value="email@gmail.com" />
+				<property name="phoneNumber" value="+34655888777" />
+				<property name="email" value="email@gmail.com" />
+				<property name="address" value="Despacho" />
+				<property name="finder" ref="finderVisitor4" />
+				
+				<property name="visits">
+					<list>
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxVisitor4" />
+						<ref bean="outBoxVisitor4" />
+						<ref bean="trashBoxVisitor4" />
+						<ref bean="suspiciousBoxVisitor4" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount10" />
+			</bean>
+			
+	<!-- SALESMAN -->
+		<!-- SALESMAN1 -->
+			<bean id="salesMan1" class="domain.SalesMan">
+				<property name="name" value="El Buhonero" />
+				<property name="middleName" value="----" />
+				<property name="surname" value="De Resident Evil 4" />
+				<property name="photo" value="https://i.imgur.com/YAUtUtL.png" />
+				<property name="VATNumber" value="SE123456789" />
+				<property name="points" value="100" />
+				<property name="storeName" value="Legal Store 1" />
+				<property name="products">
+					<list>
+						<ref bean="product1" />
+						<ref bean="product2" />
+					</list>
+				</property>
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxSalesMan1" />
+						<ref bean="outBoxSalesMan1" />
+						<ref bean="trashBoxSalesMan1" />
+						<ref bean="suspiciousBoxSalesMan1" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount11" />
+			</bean>
+			
+		<!-- SALESMAN2 -->
+			<bean id="salesMan2" class="domain.SalesMan">
+				<property name="name" value="David" />
+				<property name="middleName" value="Drebin" />
+				<property name="surname" value="Monkey" />
+				<property name="photo" value="https://i.imgur.com/tYMcArr.png" />
+				<property name="VATNumber" value="SE123456987" />
+				<property name="points" value="100" />
+				<property name="storeName" value="Legal Store 2" />
+				<property name="products">
+					<list>
+					</list>
+				</property>
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxSalesMan2" />
+						<ref bean="outBoxSalesMan2" />
+						<ref bean="trashBoxSalesMan2" />
+						<ref bean="suspiciousBoxSalesMan2" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount12" />
+			</bean>
+			
+		<!-- SALESMAN3 -->
+			<bean id="salesMan3" class="domain.SalesMan">
+				<property name="name" value="System" />
+				<property name="middleName" value="NPC" />
+				<property name="surname" value="Number1" />
+				<property name="photo" value="https://i.imgur.com/8oZgs2A.png" />
+				<property name="VATNumber" value="SE321456987" />
+				<property name="points" value="100" />
+				<property name="storeName" value="Legal Store 3" />
+				<property name="products">
+					<list>
+						<ref bean="product3" />
+						<ref bean="product4" />
+					</list>
+				</property>
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxSalesMan3" />
+						<ref bean="outBoxSalesMan3" />
+						<ref bean="trashBoxSalesMan3" />
+						<ref bean="suspiciousBoxSalesMan3" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount13" />
+			</bean>
+			
+	<!-- SOCIALWORKER -->
+		<!-- SOCIALWORKER1 -->
+			<bean id="SocialWorker1" class="domain.SocialWorker">
+				<property name="name" value="Social" />
+				<property name="middleName" value="----" />
+				<property name="surname" value="Worker1" />
+				<property name="photo" value="https://i.imgur.com/dMSVIEA.png" />
+				<property name="title" value="Social Enterprise 1" />
+				<property name="curriculum" ref="curriculum1" />
+				<property name="activities">
+					<list>
+						<ref bean="activity1" />
+						<ref bean="activity2" />
+						<ref bean="activity3" />
+						<ref bean="activity4" />
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxSocialWorker1" />
+						<ref bean="outBoxSocialWorker1" />
+						<ref bean="trashBoxSocialWorker1" />
+						<ref bean="suspiciousBoxSocialWorker1" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount14" />
+			</bean>
+			
+		<!-- SOCIALWORKER2 -->
+			<bean id="SocialWorker2" class="domain.SocialWorker">
+				<property name="name" value="Social" />
+				<property name="middleName" value="----" />
+				<property name="surname" value="Worker2" />
+				<property name="photo" value="https://i.imgur.com/yf7LeGI.png" />
+				<property name="title" value="Social Enterprise 2" />
+				<property name="curriculum" ref="curriculum2" />
+				<property name="activities">
+					<list>
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxSocialWorker2" />
+						<ref bean="outBoxSocialWorker2" />
+						<ref bean="trashBoxSocialWorker2" />
+						<ref bean="suspiciousBoxSocialWorker2" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount15" />
+			</bean>
+			
+		<!-- SOCIALWORKER3 -->
+			<bean id="SocialWorker3" class="domain.SocialWorker">
+				<property name="name" value="Social" />
+				<property name="middleName" value="----" />
+				<property name="surname" value="Worker3" />
+				<property name="photo" value="https://i.imgur.com/1pWq4zf.png" />
+				<property name="title" value="Social Enterprise 3" />
+				<property name="activities">
+					<list>
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxSocialWorker3" />
+						<ref bean="outBoxSocialWorker3" />
+						<ref bean="trashBoxSocialWorker3" />
+						<ref bean="suspiciousBoxSocialWorker3" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount20" />
+			</bean>
+			
+	<!-- PRISONER -->
+		<!-- PRISONER1 -->
+			<bean id="prisoner1" class="domain.Prisoner">
+				<property name="name" value="Boris" />
+				<property name="middleName" value="El Animal" />
+				<property name="surname" value="Gonzalez" />
+				<property name="photo" value="https://i.imgur.com/Q6VAyOT.png" />
+			
+				<property name="crimeRate" value="0.7" />
+				<property name="ticker" value="231232-ABCDEF" />
+				<property name="incomeDate" value="12/12/2009 23:59" />
+				<property name="exitDate" value="12/12/2020 23:59" />
+				<property name="isIsolated" value="False" />
+				<property name="isSuspect" value="True" />
+				<property name="points" value="100" />
+				<property name="freedom" value="False" />
+				
+				<property name="charges">
+					<list>
+						<ref bean="terrorism" />
+						<ref bean="aggression" />
+						<ref bean="murder" />
+						<ref bean="assault" />
+						<ref bean="kidnapping" />
+						<ref bean="rape" />
+						<ref bean="fraud" />
+					</list>
+				</property>
+				
+				<property name="requests">
+					<list>
+						<ref bean="request1" />
+						<ref bean="request2" />
+						<ref bean="request3" />
+					</list>
+				</property>
+				
+				<property name="products">
+					<list>
+					</list>
+				</property>
+				
+				<property name="finderActivities" ref="finderPrisoner1" />
+				
+				<property name="visits">
+					<list>	
+						<ref bean="visit1" />
+					 	<ref bean="visit2" />
+						<ref bean="visit3" />
+						<ref bean="visit4" />
+						<ref bean="visit5" />
+						<ref bean="visit6" />
+						<ref bean="visit7" />
+						<ref bean="visit8" /> 
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxPrisoner1" />
+						<ref bean="outBoxPrisoner1" />
+						<ref bean="trashBoxPrisoner1" />
+						<ref bean="suspiciousBoxPrisoner1" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount16" />
+			</bean>
+			
+		<!-- PRISONER2 -->
+			<bean id="prisoner2" class="domain.Prisoner">
+				<property name="name" value="John" />
+				<property name="middleName" value="El Negro" />
+				<property name="surname" value="Coffee" />
+				<property name="photo" value="https://i.imgur.com/WqjcjXW.jpg" />
+			
+				<property name="crimeRate" value="-0.9" />
+				<property name="ticker" value="231232-CBADEF" />
+				<property name="incomeDate" value="12/12/2004 23:59" />
+				<property name="exitDate" value="12/12/2025 23:59" />
+				<property name="isIsolated" value="False" />
+				<property name="isSuspect" value="False" />
+				<property name="points" value="10" />
+				<property name="freedom" value="False" />
+				
+				<property name="charges">
+					<list>
+						<ref bean="fraud" />
+						<ref bean="terrorism" />
+					</list>
+				</property>
+				
+				<property name="requests">
+					<list>
+						<ref bean="request4" />
+						<ref bean="request5" />
+					</list>
+				</property>
+				
+				<property name="products">
+					<list>
+					</list>
+				</property>
+				
+				<property name="finderActivities" ref="finderPrisoner2" />
+				
+				<property name="visits">
+					<list>
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxPrisoner2" />
+						<ref bean="outBoxPrisoner2" />
+						<ref bean="trashBoxPrisoner2" />
+						<ref bean="suspiciousBoxPrisoner2" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount17" />
+			</bean>
+			
+		<!-- PRISONER3 -->
+			<bean id="prisoner3" class="domain.Prisoner">
+				<property name="name" value="Wals" />
+				<property name="middleName" value="---" />
+				<property name="surname" value="Wals" />
+				<property name="photo" value="https://i.imgur.com/H66MkMl.png" />
+			
+				<property name="crimeRate" value="-0.65" />
+				<property name="ticker" value="231232-FFFFFF" />
+				<property name="incomeDate" value="12/12/2004 23:59" />
+				<property name="exitDate" value="12/12/2025 23:59" />
+				<property name="isIsolated" value="True" />
+				<property name="isSuspect" value="False" />
+				<property name="points" value="100" />
+				<property name="freedom" value="False" />
+				
+				<property name="charges">
+					<list>
+						<ref bean="terrorism" />
+						<ref bean="aggression" />
+					</list>
+				</property>
+				
+				<property name="requests">
+					<list>
+						<ref bean="request6" />
+						<ref bean="request7" />
+					</list>
+				</property>
+				
+				<property name="products">
+					<list>
+					</list>
+				</property>
+				
+				<property name="finderActivities" ref="finderPrisoner3" />
+				
+				<property name="visits">
+					<list>
+					<ref bean="visit9" />
+					<ref bean="visit10" />
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxPrisoner3" />
+						<ref bean="outBoxPrisoner3" />
+						<ref bean="trashBoxPrisoner3" />
+						<ref bean="suspiciousBoxPrisoner3" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount18" />
+			</bean>
+			
+		<!-- PRISONER4 -->
+			<bean id="prisoner4" class="domain.Prisoner">
+				<property name="name" value="Juan" />
+				<property name="middleName" value="El amigos" />
+				<property name="surname" value="Pocholo" />
+				<property name="photo" value="https://i.imgur.com/Yq3VXRy.jpg" />
+			
+				<property name="crimeRate" value="-0.4" />
+				<property name="ticker" value="231232-EEEEEE" />
+				<property name="incomeDate" value="12/12/2004 23:59" />
+				<property name="exitDate" value="12/12/2025 23:59" />
+				<property name="isIsolated" value="False" />
+				<property name="isSuspect" value="False" />
+				<property name="points" value="100" />
+				<property name="freedom" value="True" />
+				
+				<property name="charges">
+					<list>
+						<ref bean="terrorism" />
+						<ref bean="aggression" />
+						<ref bean="murder" />
+					</list>
+				</property>
+				
+				<property name="requests">
+					<list>
+					</list>
+				</property>
+				
+				<property name="products">
+					<list>
+					</list>
+				</property>
+				
+				<property name="finderActivities" ref="finderPrisoner4" />
+				
+				<property name="visits">
+					<list>
+					</list>
+				</property>
+				
+				<property name="boxes">
+					<list>
+						<ref bean="inBoxPrisoner4" />
+						<ref bean="outBoxPrisoner4" />
+						<ref bean="trashBoxPrisoner4" />
+						<ref bean="suspiciousBoxPrisoner4" />
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount19" />
+			</bean>
+			
+	<!-- VISIT -->
+		<!-- PRISONER1 -->
+			<bean id="visit1" class="domain.Visit">
+				<property name="visitStatus" value="PERMITTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2016 23:59" />
+				<property name="reason" value="LEGAL" />
+				<property name="visitor" ref="visitor1" />
+				<property name="report" ref="report1" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="true" />
+			</bean>
+			
+			<bean id="visit2" class="domain.Visit">
+				<property name="visitStatus" value="PERMITTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2016 23:59" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor1" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="false" />
+			</bean>
+			
+			<bean id="visit3" class="domain.Visit">
+				<property name="visitStatus" value="PERMITTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2021 23:59" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor1" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="false" />
+			</bean>
+			
+			<bean id="visit4" class="domain.Visit">
+				<property name="visitStatus" value="ACCEPTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="06/30/2019 18:00" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor2" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="true" />
+			</bean>
+			
+			<bean id="visit5" class="domain.Visit">
+				<property name="visitStatus" value="ACCEPTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2016 23:59" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor3" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="false" />
+			</bean>
+			
+			<bean id="visit6" class="domain.Visit">
+				<property name="visitStatus" value="PENDING" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2021 23:59" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor2" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="true" />
+			</bean>
+			
+			<bean id="visit7" class="domain.Visit">
+				<property name="visitStatus" value="PENDING" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2019 23:59" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor2" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="false" />
+			</bean>
+			
+			<bean id="visit8" class="domain.Visit">
+				<property name="visitStatus" value="REJECTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="12/12/2016 23:59" />
+				<property name="reason" value="BUSSINESS" />
+				<property name="visitor" ref="visitor1" />
+				<property name="prisoner" ref="prisoner1" />
+				<property name="createdByPrisoner" value="true" />
+			</bean> 
+			
+			<bean id="visit9" class="domain.Visit">
+				<property name="visitStatus" value="PERMITTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="05/30/2019 13:00" />
+				<property name="reason" value="LEGAL" />
+				<property name="visitor" ref="visitor2" />
+				<property name="report" ref="report2" />
+				<property name="prisoner" ref="prisoner3" />
+				<property name="createdByPrisoner" value="true" />
+			</bean>
+			
+			<bean id="visit10" class="domain.Visit">
+				<property name="visitStatus" value="PERMITTED" />
+				<property name="description" value="I need to talk with him" />
+				<property name="date" value="05/30/2019 13:00" />
+				<property name="reason" value="LEGAL" />
+				<property name="visitor" ref="visitor2" />
+				<property name="prisoner" ref="prisoner3" />
+				<property name="createdByPrisoner" value="false" />
+			</bean>
+	
+	<!-- REPORT -->
+		<!-- GUARD1 -->
+			<bean id="report1" class="domain.Report">
+				<property name="description" value="The visit was really cool" />
+				<property name="date" value="12/12/2017 23:59" />
+			</bean>
+			
+			<bean id="report2" class="domain.Report">
+				<property name="description" value="The visit was really cool" />
+				<property name="date" value="12/12/2017 23:59" />
+			</bean>
+			
+	<!-- CHARGE -->
+		<bean id="murder" class="domain.Charge">
+				<property name="titleSpanish" value="Asesinato" />
+				<property name="titleEnglish" value="Murder" />
+				<property name="year" value="10" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="assault" class="domain.Charge">
+				<property name="titleSpanish" value="Asalto" />
+				<property name="titleEnglish" value="Assault" />
+				<property name="year" value="1" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="aggression" class="domain.Charge">
+				<property name="titleSpanish" value="Agresion" />
+				<property name="titleEnglish" value="Aggression" />
+				<property name="year" value="0" />
+				<property name="month" value="6" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="kidnapping" class="domain.Charge">
+				<property name="titleSpanish" value="Secuestro" />
+				<property name="titleEnglish" value="Kidnapping" />
+				<property name="year" value="8" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="rape" class="domain.Charge">
+				<property name="titleSpanish" value="Violacion" />
+				<property name="titleEnglish" value="Rape" />
+				<property name="year" value="7" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="terrorism" class="domain.Charge">
+				<property name="titleSpanish" value="Terrorismo" />
+				<property name="titleEnglish" value="Terrorism" />
+				<property name="year" value="15" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="fraud" class="domain.Charge">
+				<property name="titleSpanish" value="Fraude" />
+				<property name="titleEnglish" value="Fraud" />
+				<property name="year" value="0" />
+				<property name="month" value="9" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="suspicious" class="domain.Charge">
+				<property name="titleSpanish" value="Sospechoso" />
+				<property name="titleEnglish" value="Suspicious" />
+				<property name="year" value="0" />
+				<property name="month" value="1" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+			<bean id="warCrime" class="domain.Charge">
+				<property name="titleSpanish" value="Crimenes de guerra" />
+				<property name="titleEnglish" value="War crime" />
+				<property name="year" value="40" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="True" />
+		</bean>
+	
+	<!-- FINDER OF ACTIVITIES -->
+		<!-- FINDER1 -->
+			<bean id="finderPrisoner1" class="domain.FinderActivities">
+				<property name="keyWord" value="" />
+			
+				<property name="activities">	
+					<list>
+					</list>
+				</property>
+			</bean>
+		
+		<!-- FINDER2 -->
+			<bean id="finderPrisoner2" class="domain.FinderActivities">
+				<property name="keyWord" value="" />
+				
+				<property name="activities">	
+					<list>
+					</list>
+				</property>
+			</bean>
+		
+		<!-- FINDER3 -->
+			<bean id="finderPrisoner3" class="domain.FinderActivities">
+				<property name="keyWord" value="" />
+				
+				<property name="activities">	
+					<list>
+					</list>
+				</property>
+			</bean>
+			
+		<!-- FINDER4 -->
+			<bean id="finderPrisoner4" class="domain.FinderActivities">
+				<property name="keyWord" value="" />
+				
+				<property name="activities">	
+					<list>
+					</list>
+				</property>
+			</bean>
+	
+	<!-- FINDER OF PRISONERS -->
+		<!-- FINDER1 -->
+			<bean id="finderVisitor1" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="charge" value="charge1" />
+				<property name="prisoners">	
+					<list>
+					</list>
+				</property>
+			</bean>
+			
+		<!-- FINDER2 -->
+			<bean id="finderVisitor2" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="charge" value="charge1" />
+				<property name="prisoners">	
+					<list>
+					</list>
+				</property>
+			</bean>
+			
+		<!-- FINDER3 -->
+			<bean id="finderVisitor3" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="charge" value="charge1" />
+				<property name="prisoners">	
+					<list>
+					</list>
+				</property>
+			</bean>
+			
+		<!-- FINDER4 -->
+			<bean id="finderVisitor4" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="charge" value="charge1" />
+				<property name="prisoners">	
+					<list>
+					</list>
+				</property>
+			</bean>
+	
+	<!-- CURRICULUM -->
+		<!-- CURRICULUM -->
+			<bean id="curriculum1" class="domain.Curriculum">
+				<property name="ticker" value="181127-pUE3pR" />
+				
+				<property name="miscellaneousRecords">
+					<list>
+						<ref bean="miscellaneousRecord1" />
+					</list>
+				</property>
+				<property name="educationRecords">
+					<list>
+						<ref bean="educationRecord1" />
+					</list>
+				</property>
+				<property name="professionalRecords">
+					<list>
+						<ref bean="professionalRecord1" />
+					</list>
+				</property>
+				<property name="personalRecord" ref="personalRecord1" />
+			</bean>
+			
+			<bean id="curriculum2" class="domain.Curriculum">
+				<property name="ticker" value="181127-pUE3lA" />
+				<property name="personalRecord" ref="personalRecord2" />
+				<property name="miscellaneousRecords">
+					<list>
+						<ref bean="miscellaneousRecord2" />
+					</list>
+				</property>
+				<property name="educationRecords">
+					<list>
+						<ref bean="educationRecord2" />
+					</list>
+				</property>
+				<property name="professionalRecords">
+					<list>
+						<ref bean="professionalRecord2" />
+					</list>
+				</property>
+			</bean>
+			
+			<!-- RECORDS -->
+				<!-- PERSONAL RECORD -->
+					<bean id="personalRecord1" class="domain.PersonalRecord">
+						<property name="fullName" value="Personal" />
+						<property name="photo" value="https://www.photo.com" />
+						<property name="email" value="email@gmail.com" />
+						<property name="phoneNumber" value="+34710125963" />
+						<property name="urlLinkedInProfile" value="https://www.linkedin.com" />
+					</bean>
+					
+					<bean id="personalRecord2" class="domain.PersonalRecord">
+						<property name="fullName" value="Personal" />
+						<property name="photo" value="https://www.photo.com" />
+						<property name="email" value="email@gmail.com" />
+						<property name="phoneNumber" value="+34710125944" />
+						<property name="urlLinkedInProfile" value="https://www.linkedin.com" />
+					</bean>
+				
+				<!-- PROFESSIONAL RECORD -->
+						<bean id="professionalRecord1" class="domain.ProfessionalRecord">
+							<property name="nameCompany" value="Proffesional S.L." />
+							<property name="startDate" value="11/09/2009 23:59" />
+							<property name="endDate" value="11/09/2013 23:59" />
+							<property name="role" value="Admin" />
+							<property name="linkAttachment" value="https://www.attachment.com" />
+						</bean>
+						
+						<bean id="professionalRecord2" class="domain.ProfessionalRecord">
+							<property name="nameCompany" value="Proffesional S.L." />
+							<property name="startDate" value="11/09/2009 23:59" />
+							<property name="endDate" value="11/09/2013 23:59" />
+							<property name="role" value="Admin" />
+							<property name="linkAttachment" value="https://www.attachment.com" />
+						</bean>
+						
+				<!-- MISCELLANEOUS RECORD -->
+						<bean id="miscellaneousRecord1" class="domain.MiscellaneousRecord">
+							<property name="title" value="Miscellaneous" />
+							<property name="linkAttachment" value="https://www.attachment.com" />
+						</bean>
+						
+						<bean id="miscellaneousRecord2" class="domain.MiscellaneousRecord">
+							<property name="title" value="Miscellaneous" />
+							<property name="linkAttachment" value="https://www.attachment.com" />
+						</bean>
+				
+				<!-- EDUCATIONAL RECORD -->
+					<bean id="educationRecord1" class="domain.EducationRecord">
+						<property name="title" value="Title of record" />
+						<property name="startDateStudy" value="09/11/2018 12:30" />
+						<property name="endDateStudy" value="09/12/2018 13:30" />
+						<property name="institution" value="Name of institution" />
+						<property name="link" value="https://www.url.com/example3" />
+					</bean>
+					
+					<bean id="educationRecord2" class="domain.EducationRecord">
+						<property name="title" value="Title of record" />
+						<property name="startDateStudy" value="09/11/2018 12:30" />
+						<property name="endDateStudy" value="09/12/2018 13:30" />
+						<property name="institution" value="Name of institution" />
+						<property name="link" value="https://www.url.com/example3" />
+					</bean>
+				
+	<!-- ACTIVITY -->
+		<!-- SOCIALWORKER1 -->
+			<bean id="activity1" class="domain.Activity">
+						<property name="title" value="Reading club" />
+						<property name="description" value="Reading club description" />
+						<property name="realizationDate" value="09/12/2021 13:30" />
+						<property name="maxAssistant" value="5" />
+						<property name="rewardPoints" value="100" />
+						<property name="isFinalMode" value="true" />
+						<property name="requests">
+						    <list>
+						    	<ref bean="request1" />
+						    	<ref bean="request4" />
+						    	<ref bean="request6" />
+							</list>
+						</property>
+			</bean>
+			
+			<bean id="activity2" class="domain.Activity">
+						<property name="title" value="Tea Ceremony" />
+						<property name="description" value="Tea is not letal" />
+						<property name="realizationDate" value="09/12/2019 13:30" />
+						<property name="maxAssistant" value="2" />
+						<property name="rewardPoints" value="10" />
+						<property name="isFinalMode" value="true" />
+						<property name="requests">
+						    <list>
+						    	<ref bean="request2" />
+						    	<ref bean="request5" />
+							</list>
+						</property>
+			</bean>
+			
+			<bean id="activity3" class="domain.Activity">
+						<property name="title" value="Alcoholics Anonymous" />
+						<property name="description" value="Drinks are free, and illegal" />
+						<property name="realizationDate" value="09/12/2019 13:30" />
+						<property name="maxAssistant" value="8" />
+						<property name="rewardPoints" value="1" />
+						<property name="isFinalMode" value="true" />
+						<property name="requests">
+						    <list>
+						    	<ref bean="request3" />
+								<ref bean="request7" />
+							</list>
+						</property>
+			</bean>
+			
+			<bean id="activity4" class="domain.Activity">
+						<property name="title" value="Antisuicide Club" />
+						<property name="description" value="Killing is bad, killing yourself is worst" />
+						<property name="realizationDate" value="09/12/2019 13:30" />
+						<property name="maxAssistant" value="20" />
+						<property name="rewardPoints" value="5" />
+						<property name="isFinalMode" value="false" />
+						<property name="requests">
+						    <list>
+							</list>
+						</property>
+			</bean>
+			
+	<!-- REQUEST -->
+		<!-- PRISONER1 -->
+			<bean id="request1" class="domain.Request">
+						<property name="status" value="APPROVED" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="activity" ref="activity1" />
+						<property name="prisoner" ref="prisoner1" />
+			</bean>
+			
+			<bean id="request2" class="domain.Request">
+						<property name="status" value="PENDING" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="activity" ref="activity2" />
+						<property name="prisoner" ref="prisoner1" />
+			</bean>
+			
+			<bean id="request3" class="domain.Request">
+						<property name="status" value="REJECTED" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="rejectReason" value="We dont have enough beer" />
+						<property name="activity" ref="activity3" />
+						<property name="prisoner" ref="prisoner1" />
+			</bean>
+		
+		<!-- PRISONER2 -->
+			<bean id="request4" class="domain.Request">
+						<property name="status" value="PENDING" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="activity" ref="activity1" />
+						<property name="prisoner" ref="prisoner2" />
+			</bean>
+			
+			<bean id="request5" class="domain.Request">
+						<property name="status" value="APPROVED" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="activity" ref="activity2" />
+						<property name="prisoner" ref="prisoner2" />
+			</bean>
+			
+		<!-- PRISONER3 -->
+			<bean id="request6" class="domain.Request">
+						<property name="status" value="REJECTED" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="rejectReason" value="We dont have enough beer" /> 
+						<property name="activity" ref="activity1" />
+						<property name="prisoner" ref="prisoner3" />
+			</bean>
+			
+			<bean id="request7" class="domain.Request">
+						<property name="status" value="PENDING" />
+						<property name="motivation" value="Killing is bad, killing yourself is worst" />
+						<property name="activity" ref="activity3" />
+						<property name="prisoner" ref="prisoner3" />
+			</bean>
+			
+	<!-- PRODUCT -->
+		<!-- SALESMAN1 -->
+			<bean id="product1" class="domain.Product">
+						<property name="name" value="Not an M16" />
+						<property name="description" value="Definitely not an M16" />
+						<property name="price" value="15" />
+						<property name="stock" value="1" />
+						<property name="isDraftMode" value="False" />
+						<property name="type" ref="type1" />
+			</bean>
+			
+			<bean id="product2" class="domain.Product">
+						<property name="name" value="straitjacket" />
+						<property name="description" value="The most comfortable clothing ever" />
+
+						<property name="price" value="5" />
+						<property name="stock" value="5" />
+						<property name="isDraftMode" value="True" />
+						<property name="type"  ref="type2"/>
+			</bean>
+		
+		<!-- SALESMAN2 -->
+			<bean id="product3" class="domain.Product">
+						<property name="name" value="Not a knife" />
+						<property name="description" value="Definitely not a knife" />
+			
+						<property name="price" value="10" />
+						<property name="stock" value="3" />
+						<property name="isDraftMode" value="False" />
+						<property name="type" ref="type4" />
+			</bean>
+			
+			<bean id="product4" class="domain.Product">
+						<property name="name" value="Not drugs" />
+						<property name="description" value="Definitely not drugs" />
+			
+						<property name="price" value="1000" />
+						<property name="stock" value="8" />
+						<property name="isDraftMode" value="True" />
+						<property name="type" ref="type3" />
+			</bean>
+	
+	
+	<!-- BOXES -->
+		<!-- WARDEN -->
+			<!-- WARDEN1 -->
+				<bean class="domain.Box" id="inBoxWarden1">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+						    	<ref bean="message1" />
+							</list>
+						</property>
+				</bean>
+				
+					<bean class="domain.Box" id="outBoxWarden1">
+							<property value="OUTBOX" name="name" />
+							<property value="true" name="isSystem" />
+							<property name="messages">
+							    <list>
+								</list>
+							</property>
+					</bean>
+					
+					<bean class="domain.Box" id="trashBoxWarden1">
+							<property value="TRASHBOX" name="name" />
+							<property value="true" name="isSystem" />
+							<property name="messages">
+							    <list>
+							    	<ref bean="message3" />
+								</list>
+							</property>
+					</bean>
+					
+					<bean class="domain.Box" id="suspiciousBoxWarden1">
+							<property value="SUSPICIOUSBOX" name="name" />
+							<property value="true" name="isSystem" />
+							<property name="messages">
+							    <list>
+								</list>
+							</property>
+					</bean>
+
+				<bean class="domain.Box" id="nosystemBox1">
+						<property value="nosystemBox1" name="name" />
+						<property value="false" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				
+				
+			<!-- WARDEN2 -->
+				<bean class="domain.Box" id="inBoxWarden2">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+						    	<ref bean="message2" />
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxWarden2">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxWarden2">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxWarden2">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+		
+		<!-- GUARD -->
+			<!-- GUARD1 -->
+				<bean class="domain.Box" id="inBoxGuard1">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxGuard1">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxGuard1">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxGuard1">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- GUARD2 -->
+				<bean class="domain.Box" id="inBoxGuard2">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxGuard2">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxGuard2">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxGuard2">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- GUARD3 -->
+				<bean class="domain.Box" id="inBoxGuard3">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxGuard3">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxGuard3">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxGuard3">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- GUARD4 -->
+				<bean class="domain.Box" id="inBoxGuard4">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxGuard4">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxGuard4">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxGuard4">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+			
+		<!-- VISITOR -->
+			<!-- VISITOR1 -->
+				<bean class="domain.Box" id="inBoxVisitor1">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxVisitor1">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxVisitor1">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxVisitor1">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- VISITOR2 -->
+				<bean class="domain.Box" id="inBoxVisitor2">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxVisitor2">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxVisitor2">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxVisitor2">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+			
+			<!-- VISITOR3-->
+				<bean class="domain.Box" id="inBoxVisitor3">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxVisitor3">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxVisitor3">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxVisitor3">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- VISITOR4-->
+				<bean class="domain.Box" id="inBoxVisitor4">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxVisitor4">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxVisitor4">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxVisitor4">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+		<!-- SALESMAN -->
+			<!-- SALESMAN1 -->
+				<bean class="domain.Box" id="inBoxSalesMan1">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSalesMan1">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSalesMan1">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSalesMan1">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- SALESMAN2 -->
+				<bean class="domain.Box" id="inBoxSalesMan2">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSalesMan2">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSalesMan2">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSalesMan2">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- SALESMAN3 -->
+				<bean class="domain.Box" id="inBoxSalesMan3">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSalesMan3">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSalesMan3">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSalesMan3">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- SALESMAN4 -->
+				<bean class="domain.Box" id="inBoxSalesMan4">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSalesMan4">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSalesMan4">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSalesMan4">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+		<!-- SOCIALWORKER -->
+			<!-- SOCIALWORKER1 -->
+				<bean class="domain.Box" id="inBoxSocialWorker1">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSocialWorker1">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSocialWorker1">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSocialWorker1">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- SOCIALWORKER2 -->
+				<bean class="domain.Box" id="inBoxSocialWorker2">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSocialWorker2">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSocialWorker2">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSocialWorker2">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+		<!-- SOCIALWORKER3 -->
+				<bean class="domain.Box" id="inBoxSocialWorker3">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxSocialWorker3">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxSocialWorker3">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxSocialWorker3">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+		<!-- PRISONER -->
+			<!-- PRISONER1 -->
+				<bean class="domain.Box" id="inBoxPrisoner1">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxPrisoner1">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxPrisoner1">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxPrisoner1">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+			
+			<!-- PRISONER2 -->
+				<bean class="domain.Box" id="inBoxPrisoner2">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxPrisoner2">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxPrisoner2">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxPrisoner2">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- PRISONER3 -->
+				<bean class="domain.Box" id="inBoxPrisoner3">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxPrisoner3">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxPrisoner3">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxPrisoner3">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+			<!-- PRISONER4 -->
+				<bean class="domain.Box" id="inBoxPrisoner4">
+						<property value="INBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="outBoxPrisoner4">
+						<property value="OUTBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="trashBoxPrisoner4">
+						<property value="TRASHBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+				
+				<bean class="domain.Box" id="suspiciousBoxPrisoner4">
+						<property value="SUSPICIOUSBOX" name="name" />
+						<property value="true" name="isSystem" />
+						<property name="messages">
+						    <list>
+							</list>
+						</property>
+				</bean>
+			<!-- TYPEPRODUCT -->
+				
+				<bean id="type1" class="domain.TypeProduct">
+						<property name="typeProductEN" value="Decoration" />
+						<property name="typeProductES" value="Decoracion" />
+				</bean>
+				
+				<bean id="type2" class="domain.TypeProduct">
+						<property name="typeProductEN" value="Clothes" />
+						<property name="typeProductES" value="Ropa" />
+				</bean>
+				
+				<bean id="type3" class="domain.TypeProduct">
+						<property name="typeProductEN" value="Sugar" />
+						<property name="typeProductES" value="Azucar" />
+				</bean>
+				
+				<bean id="type4" class="domain.TypeProduct">
+						<property name="typeProductEN" value="Sewing" />
+						<property name="typeProductES" value="Costura" />
+				</bean>
+				
+				<bean id="type5" class="domain.TypeProduct">
+						<property name="typeProductEN" value="Games" />
+						<property name="typeProductES" value="Juegos" />
+				</bean>
+				
+			
+		<bean class="domain.Message" id="message1">
+			<property value="11/11/2011 11:11" name="moment" />
+			<property value="This is a sent message by admin1" name="subject" />
+			<property value="from admin1 to admin2" name="body" />
+			<property value="LOW" name="priority" />
+			<property value="tag" name="tags"/>
+				
+			<property value="warden1" name="sender" /> 
+			
+			<property value="warden2" name="recipient" />
+				
+
+		</bean>
+		
+		<bean class="domain.Message" id="message2">
+			<property value="11/11/2011 11:11" name="moment" />
+			<property value="This is a sent message by admin1" name="subject" />
+			<property value="from admin1 to admin2" name="body" />
+			<property value="LOW" name="priority" />
+			<property value="tag" name="tags"/>
+				
+			<property value="warden1" name="sender" /> 
+			
+			<property value="warden2" name="recipient" />
+				
+
+		</bean>
+		
+		<bean class="domain.Message" id="message3">
+			<property value="11/11/2011 11:11" name="moment" />
+			<property value="This is a sent message by admin1" name="subject" />
+			<property value="from admin1 to admin2" name="body" />
+			<property value="LOW" name="priority" />
+			<property value="tag" name="tags"/>
+				
+			<property value="warden2" name="sender" /> 
+			
+			<property value="warden1" name="recipient" />
+				
+
+		</bean>
+				
+				
+				
+				
+</beans>

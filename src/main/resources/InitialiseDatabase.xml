@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	* InitialiseDatabase.xml 
+	* 
+	* Copyright (C) 2019 Universidad de Sevilla 
+	* 
+	* The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from http://www.tdg-seville.info/License.html 
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<!-- CONFIGURATION -->
+	<bean id ="configuration" class="domain.Configuration">
+		<property name="spainTelephoneCode" value="+34" />
+
+		<property name="spamWords">
+			<list>
+				<value>knife</value>
+				<value>escape</value>
+				<value>gun</value>
+				<value>riot</value>
+				<value>liberty</value>
+				<value>kill</value>
+				<value>weapon</value>
+				<value>soap</value>
+				<value>hole</value>
+				<value>cuchillo</value>
+				<value>escapar</value>
+				<value>pistola</value>
+				<value>motin</value>
+				<value>libertad</value>
+				<value>matar</value>
+				<value>arma</value>
+				<value>jabon</value>
+				<value>agujero</value>
+				<value>wals</value>
+			</list>
+		</property>
+		
+		<property name="typeProducts">
+			<list>
+				<ref bean="type1" />
+				<ref bean="type2" />
+				<ref bean="type3" />
+				<ref bean="type4" />
+				<ref bean="type5" />
+			</list>
+		</property>
+		
+		<property name="minFinderResults" value="1" />
+		<property name="maxFinderResults" value="24" />
+		<property name="timeFinderPrisoners" value="1"/>
+		<property name="timeFinderActivities" value="1"/>
+		<property name="finderResult" value="10"/>
+
+		
+		<property name="welcomeMessageEnglish" value="Welcome to Acme Alcatraz! Where your liberty ends" />
+		<property name="welcomeMessageSpanish" value="¡Bienvenidos a Acme Alcatraz! Donde vuestra libertad acaba" />
+		
+		<property name="systemName" value="Acme Alcatraz" />
+		<property name="imageURL" value="https://i.imgur.com/RktieYk.jpg" />
+	</bean>
+	
+	<!-- warden -->
+		<bean id="userAccount1" class="security.UserAccount">
+			<property name="username" value="warden" />
+			<property name="password" value="170e46bf5e0cafab00cac3a650910837" />
+			<property name="authorities">
+				<list>
+					<bean class="security.Authority">
+						<property name="authority" value="WARDEN" />
+					</bean>
+				</list>
+			</property>
+			<property name="isNotLocked" value="True" />
+		</bean>
+		
+	<!-- WARDEN1 -->
+		<bean id="warden" class="domain.Warden">
+			<property name="name" value="Juan Carlos" />
+			<property name="middleName" value="El de Cuba" />
+			<property name="surname" value="Alonso Valenzuela" />
+			<property name="photo" value="https://i.imgur.com/P6t2k18.png" />
+			<property name="email" value="warden@email.com" />
+		
+			<property name="boxes">
+				<list>
+					<ref bean="inBoxWarden1" />
+					<ref bean="outBoxWarden1" />
+					<ref bean="trashBoxWarden1" />
+					<ref bean="suspiciousBoxWarden1" />
+					<ref bean="nosystemBox1" />
+				</list>
+			</property>
+			<property name="userAccount" ref="userAccount1" />
+		</bean>
+		
+		<bean class="domain.Box" id="inBoxWarden1">
+			<property value="INBOX" name="name" />
+			<property value="true" name="isSystem" />
+			<property name="messages">
+			    <list>
+				</list>
+			</property>
+		</bean>
+		
+		<bean class="domain.Box" id="outBoxWarden1">
+			<property value="OUTBOX" name="name" />
+			<property value="true" name="isSystem" />
+			<property name="messages">
+			    <list>
+				</list>
+			</property>
+		</bean>
+			
+		<bean class="domain.Box" id="trashBoxWarden1">
+			<property value="TRASHBOX" name="name" />
+			<property value="true" name="isSystem" />
+			<property name="messages">
+			    <list>
+				</list>
+			</property>
+		</bean>
+		
+		<bean class="domain.Box" id="suspiciousBoxWarden1">
+			<property value="SUSPICIOUSBOX" name="name" />
+			<property value="true" name="isSystem" />
+			<property name="messages">
+			    <list>
+				</list>
+			</property>
+		</bean>
+
+		<bean class="domain.Box" id="nosystemBox1">
+			<property value="nosystemBox1" name="name" />
+			<property value="false" name="isSystem" />
+			<property name="messages">
+			    <list>
+				</list>
+			</property>
+		</bean>
+		
+		<!-- CHARGE -->
+		<bean id="murder" class="domain.Charge">
+				<property name="titleSpanish" value="Asesinato" />
+				<property name="titleEnglish" value="Murder" />
+				<property name="year" value="10" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="assault" class="domain.Charge">
+				<property name="titleSpanish" value="Asalto" />
+				<property name="titleEnglish" value="Assault" />
+				<property name="year" value="1" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="aggression" class="domain.Charge">
+				<property name="titleSpanish" value="Agresion" />
+				<property name="titleEnglish" value="Aggression" />
+				<property name="year" value="0" />
+				<property name="month" value="6" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="kidnapping" class="domain.Charge">
+				<property name="titleSpanish" value="Secuestro" />
+				<property name="titleEnglish" value="Kidnapping" />
+				<property name="year" value="8" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="rape" class="domain.Charge">
+				<property name="titleSpanish" value="Violacion" />
+				<property name="titleEnglish" value="Rape" />
+				<property name="year" value="7" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="terrorism" class="domain.Charge">
+				<property name="titleSpanish" value="Terrorismo" />
+				<property name="titleEnglish" value="Terrorism" />
+				<property name="year" value="15" />
+				<property name="month" value="0" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="fraud" class="domain.Charge">
+				<property name="titleSpanish" value="Fraude" />
+				<property name="titleEnglish" value="Fraud" />
+				<property name="year" value="0" />
+				<property name="month" value="9" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<bean id="suspicious" class="domain.Charge">
+				<property name="titleSpanish" value="Sospechoso" />
+				<property name="titleEnglish" value="Suspicious" />
+				<property name="year" value="0" />
+				<property name="month" value="1" />
+				<property name="isDraftMode" value="False" />
+		</bean>
+		
+		<!-- TYPEPRODUCT -->
+				
+		<bean id="type1" class="domain.TypeProduct">
+				<property name="typeProductEN" value="Decoration" />
+				<property name="typeProductES" value="Decoracion" />
+		</bean>
+		
+		<bean id="type2" class="domain.TypeProduct">
+				<property name="typeProductEN" value="Clothes" />
+				<property name="typeProductES" value="Ropa" />
+		</bean>
+		
+		<bean id="type3" class="domain.TypeProduct">
+				<property name="typeProductEN" value="Sugar" />
+				<property name="typeProductES" value="Azucar" />
+		</bean>
+		
+		<bean id="type4" class="domain.TypeProduct">
+				<property name="typeProductEN" value="Sewing" />
+				<property name="typeProductES" value="Costura" />
+		</bean>
+		
+		<bean id="type5" class="domain.TypeProduct">
+				<property name="typeProductEN" value="Games" />
+				<property name="typeProductES" value="Juegos" />
+		</bean>
+	
+</beans>

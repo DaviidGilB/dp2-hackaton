@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="anonymous/prisoner/list" extends="master.page">	
+		<put-attribute name="title" value="Prisoners" />
+		<put-attribute name="body" value="/views/anonymous/listOfPrisoners.jsp" />
+	</definition>
+	
+	<definition name="anonymous/charge/list" extends="master.page">	
+		<put-attribute name="title" value="Charges" />
+		<put-attribute name="body" value="/views/anonymous/listOfCharges.jsp" />
+	</definition>
+	
+	<definition name="anonymous/product/list" extends="master.page">	
+		<put-attribute name="title" value="Products" />
+		<put-attribute name="body" value="/views/anonymous/listOfProducts.jsp" />
+	</definition>
+	
+	<definition name="termsAndConditionsEN" extends="master.page">	
+		<put-attribute name="body" value="/views/anonymous/termsAndConditionsEN.jsp" />
+	</definition>
+	
+	<definition name="termsAndConditionsES" extends="master.page">	
+		<put-attribute name="body" value="/views/anonymous/termsAndConditionsES.jsp" />
+	</definition>
+	
+		
+	<definition name="anonymous/socialWorker/create" extends="master.page">	
+		<put-attribute name="title" value="Register as Social Worker" />
+		<put-attribute name="body" value="/views/anonymous/registerSocialWorker.jsp" />
+	</definition>
+
+	<definition name="anonymous/visitor/create" extends="master.page">	
+		<put-attribute name="title" value="Register as visitor" />
+		<put-attribute name="body" value="/views/anonymous/registerVisitor.jsp" />
+	</definition>
+</tiles-definitions>
+
